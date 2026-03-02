@@ -1,4 +1,8 @@
 from flask import Flask, render_template
+import sqlite3
+from sqlite3 import Error
+
+DATABASE = "Cafe_database"
 
 app = Flask(__name__)
 
@@ -9,7 +13,7 @@ def render_homepage():
 
 
 @app.route('/menu')
-def render_menu_page():
+def render_menu():
     return render_template('menu.html')
 
 
