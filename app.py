@@ -10,15 +10,15 @@ def connect_database(db_file):
     """
     creates a connection with the database
     :param db_file:
-    :return:
+    :return: conn
     """
     try:
         connection = sqlite3.connect(db_file)
         return connection
     except Error as e:
         print(e)
-        print(f'An error occurred when connecting to the database')
-    return
+        print(f'An error occurred when connecting to the database. ')
+    return None
 
 
 @app.route('/')
@@ -34,7 +34,7 @@ def render_menu():
     cur.execute(query)
     product_list = cur.fetchall()
     print(product_list)
-    con.close
+    con.close()
     return render_template('menu.html', list_of_coffees = product_list)
 
 

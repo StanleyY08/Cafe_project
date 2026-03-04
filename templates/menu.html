@@ -7,21 +7,15 @@ menu
 
 {% block main %}
     <div class="products">
-        <div class="product-box">
-            <h3 class = product-box-heading> Flat white</h3>
-            <p class="product-box-info"> Definitely created in New Zealand (not in the west island). </p>
-            <img src="static/images/flatwhite.jpg">
-            <p><strong> Size: </strong> 180ml </p>
-            <p><strong> Price: </strong> $4.00 </p>
-        </div>
-
-        <div class="product-box">
-            <h3 class = product-box-heading> Latte</h3>
-            <p class="product-box-info"> Latte a big flat white with more foamy milk. </p>
-            <img src="static/images/latte.jpg">
-            <p><strong> Size: </strong> 240ml </p>
-            <p><strong> Price: </strong> $5.00 </p>
-        </div>
+            {% for coffee in list_of_coffees %}
+                <div class="product-box">
+                    <h3 class = product-box-heading> {{ coffee [0] }}</h3>
+                    <p class="product-box-info"> {{ coffee [1] }} </p>
+                    <img src="static/images/{{ coffee [3] }}.jpg">
+                    <p><strong> Size: </strong> {{ coffee[4] }} </p>
+                    <p><strong> Price: </strong> {{ coffee[5] }} </p>
+                </div>
+            {% endfor %}
 
     </div>
 
