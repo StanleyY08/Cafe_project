@@ -6,6 +6,20 @@ DATABASE = "Cafe_database"
 
 app = Flask(__name__)
 
+def connect_database(db_file):
+    """
+    creates a connection with the database
+    :param db_file:
+    :return:
+    """
+    try:
+        connection = sqlite3.connect(db_file)
+        return connection
+    except Error as e:
+        print(e)
+        print(f'An error occurred when connecting to the database')
+    return
+
 
 @app.route('/')
 def render_homepage():
@@ -14,7 +28,14 @@ def render_homepage():
 
 @app.route('/menu')
 def render_menu():
-    return render_template('menu.html')
+    con = connect_database(DATABASE)
+    query = "SELECT name, description, volume, image, price FROM products"
+    cur = con.cursor()
+    cur.execute(query)
+    product_list = cur.fetchall()
+    print(product_list)
+    con.close
+    return render_template('menu.html', list_of_coffees = product_list)
 
 
 @app.route('/contact')
