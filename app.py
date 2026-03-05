@@ -39,7 +39,15 @@ def render_menu(cat_id):
     print(product_list)
     print(cat_list)
     con.close()
-    return render_template('menu.html', list_of_coffees = product_list, list_of_catergories=cat_list)
+    return render_template('menu.html', list_of_coffees=product_list, list_of_categories=cat_list)
+
+@app.route('/signup')
+def render_signup_page():
+    return render_template('signup.html')
+
+@app.route('/login')
+def render_login_page():
+    return render_template('login.html')
 
 
 @app.route('/contact')

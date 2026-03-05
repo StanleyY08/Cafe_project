@@ -3,6 +3,12 @@
 {% block pageheading %}
 menu
     <p>Welcome to Wellington's finest cafe</p>
+    <div class="categories">
+        {% for cat in list_of_categories %}
+            <li> <a href="/menu/{{ cat[0] }}"> {{ cat[1] }}</a> </li>
+        {% endfor %}
+    </div>
+
 {% endblock %}
 
 {% block main %}
