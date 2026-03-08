@@ -41,11 +41,13 @@ def render_menu(cat_id):
     con.close()
     return render_template('menu.html', list_of_coffees=product_list, list_of_categories=cat_list)
 
-@app.route('/signup')
+@app.route('/signup', methods=['POST', 'GET'])
 def render_signup_page():
+    if request.method == 'POST':
+        fname = request.form.get()
     return render_template('signup.html')
 
-@app.route('/login')
+@app.route('/login', methods=['POST', 'GET'])
 def render_login_page():
     return render_template('login.html')
 
